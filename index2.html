@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Daniel Para meu amor, Williane 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #D6F4FF, #CFFFE5);
+    color: #2f4f4f;
+    text-align: center;
+    overflow-x: hidden;
+    transition: background 0.8s ease, color 0.8s ease;
+}
+
+body.noite {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f8c8dc;
+}
+
+h1 { margin-top: 25px; font-size: 24px; padding: 0 10px; }
+
+.contador {
+    margin: 10px 20px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.6);
+    padding: 10px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.container { padding: 15px; max-width: 500px; margin: auto; transition: opacity 0.6s ease; }
+.escondido { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
+
+.tema {
+    background: #ffffff;
+    margin: 15px 0;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.tema button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: linear-gradient(45deg,#9EDFD3,#A7C7FF);
+    color: #1e3d3d;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.conteudo {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease, opacity 0.5s ease;
+    opacity: 0;
+    padding: 0 15px;
+}
+
+.conteudo.ativo {
+    max-height: 800px;
+    opacity: 1;
+    padding: 15px;
+}
+
+.conteudo img {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+
+.texto {
+    background: #EAFBF3;
+    padding: 14px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    font-size: 14px;
+}
+
+.botao-surpresa {
+    margin: 25px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg,#9EDFD3,#7FB3FF);
+    color: #1e3d3d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.surpresa {
+    display: none;
+    margin: 15px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mensagens-noite {
+    display: none;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.mensagem-noite {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+}
+
+.modo-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #ffffffaa;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+@keyframes flutuar {
+    from { transform: translateY(0) scale(0.8); opacity: 0; }
+    20% { opacity: 0.8; }
+    to { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
+
+@keyframes cairEstrela {
+    from { transform: translateY(-10vh) scale(0.6); opacity: 0; }
+    20% { opacity: 1; }
+    to { transform: translateY(110vh) scale(1); opacity: 0; }
+}
+
+.coracao, .estrela {
+    position: fixed;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.coracao { bottom: -20px; animation: flutuar linear forwards; }
+.estrela { top: -20px; animation: cairEstrela linear forwards; color: #fffacd; }
+</style>
+
+<style>
+.next-page {
+  background: linear-gradient(135deg, #7dd3fc, #86efac);
+  border: none;
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.next-page:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+</style>
+
+</head>
+
+<body>
+
+<button class="modo-btn" onclick="modoNoite()">🌙</button>
+
+<button class="next-page" onclick="window.location.href='index.html'">
+  ➡️ Próxima página
+</button>
+
+<h1>💖 De Daniel Para meu amor, Williane 💖</h1>
+<div class="contador" id="contador"></div>
+
+<div class="container" id="conteudoNormal">
+
+    <div class="tema">
+        <button onclick="toggleTema(0)">💘 Porque meu coração escolheu você</button>
+        <div class="conteudo">
+            <img src="foto1.jpg" alt="Nós dois">
+            <div class="texto">
+                Desde o primeiro momento, algo em você me fez sentir em casa.  
+                Seu jeito, seu sorriso, sua energia… tudo em você conversa com o meu coração.  
+                Não foi escolha da minha mente — foi destino do meu coração escolher você. 💖
+            </div>
+        </div>
+    </div>
+
+    <div class="tema">
+        <button onclick="toggleTema(1)">😊 Porque você me faz feliz</button>
+        <div class="conteudo">
+            <img src="foto2.jpg" alt="Momentos felizes">
+            <div class="texto">
+                Você transforma dias comuns em momentos especiais.  
+                Sua risada é meu som favorito, seu abraço é meu lugar de paz.  
+                Com você, a vida fica mais leve, mais colorida e muito mais feliz. ✨
+            </div>
+        </div>
+    </div>
+
+    <div class="tema">
+        <button onclick="toggleTema(2)">👑 Porque você é a mulher da minha vida</button>
+        <div class="conteudo">
+            <img src="foto3.jpg" alt="Amor verdadeiro">
+            <div class="texto">
+                Eu não quero só viver momentos com você…  
+                Eu quero construir sonhos, planos e um futuro ao seu lado.  
+                Você é meu presente mais lindo e o futuro que eu sempre pedi a Deus. 💍💞
+            </div>
+        </div>
+    </div>
+
+    <button class="botao-surpresa" onclick="mostrarSurpresa()">Clique aqui se você me ama 💘</button>
+    <div class="surpresa" id="surpresa">
+        💌 Williane, eu sou muito grato por ter você na minha vida.  
+        Obrigado por cada carinho, cada conversa, cada momento.  
+        Eu te amo mais do que palavras conseguem explicar. 💖
+    </div>
+</div>
+
+<div class="mensagens-noite" id="mensagensNoite">
+    <div class="mensagem-noite">🌙 Você é meu último pensamento antes de dormir</div>
+    <div class="mensagem-noite">✨ Seu amor ilumina até meus dias mais escuros</div>
+    <div class="mensagem-noite">💫 Quero acordar todos os dias da minha vida ao seu lado</div>
+</div>
+
+<script>
+let modoNoturnoAtivo = false;
+let intervaloAnimacao;
+
+function toggleTema(i){
+    document.querySelectorAll(".conteudo")[i].classList.toggle("ativo");
+}
+
+function mostrarSurpresa(){
+    document.getElementById("surpresa").style.display = "block";
+}
+
+function modoNoite(){
+    modoNoturnoAtivo = !modoNoturnoAtivo;
+    document.body.classList.toggle("noite");
+    document.getElementById("conteudoNormal").classList.toggle("escondido");
+    document.getElementById("mensagensNoite").style.display = modoNoturnoAtivo ? "block" : "none";
+
+    clearInterval(intervaloAnimacao);
+    intervaloAnimacao = setInterval(modoNoturnoAtivo ? criarEstrela : criarCoracao, 900);
+}
+
+function atualizarContador() {
+    const inicio = new Date(2026, 0, 11); // 10/01/2026 (mês começa em 0)
+    const agora = new Date();
+
+    let meses =
+        (agora.getFullYear() - inicio.getFullYear()) * 12 +
+        (agora.getMonth() - inicio.getMonth());
+
+    // se ainda não chegou no dia 10 do mês atual, não completou o mês
+    if (agora.getDate() < inicio.getDate()) {
+        meses--;
+    }
+
+    const dataMeses = new Date(inicio);
+    dataMeses.setMonth(inicio.getMonth() + meses);
+
+    const diff = agora - dataMeses;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("contador").innerHTML =
+        `💞 Estamos juntos há <b>${meses} mês(es) e ${dias} dia(s)</b>`;
+}
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+function criarCoracao(){
+    const c = document.createElement("div");
+    c.className = "coracao";
+    c.innerHTML = "💖";
+    c.style.left = Math.random()*100 + "vw";
+    c.style.animationDuration = (6 + Math.random()*6) + "s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),12000);
+}
+
+function criarEstrela(){
+    const e = document.createElement("div");
+    e.className = "estrela";
+    e.innerHTML = "⭐";
+    e.style.left = Math.random()*100 + "vw";
+    e.style.animationDuration = (4 + Math.random()*5) + "s";
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),10000);
+}
+
+intervaloAnimacao = setInterval(criarCoracao, 900);
+</script>
+
+</body>
+</html>

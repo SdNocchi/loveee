@@ -2,270 +2,350 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<title>Nossa História 💙</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>De Daniel Para meu amor, Williane 💖</title>
 
 <style>
+/* ================= BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #D6F4FF, #CFFFE5);
-    color: #2f4f4f;
-    text-align: center;
-    overflow-x: hidden;
-    transition: background 0.8s ease, color 0.8s ease;
+  background: linear-gradient(120deg, #cceee8, #dbeafe);
+  color: #1f2933;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.6s, color 0.6s;
 }
 
-body.noite {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #f8c8dc;
+/* ================= FUNDO COM ONDA ================= */
+.wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 200px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  animation: wave 12s linear infinite;
+  z-index: -1;
 }
 
-h1 { margin-top: 25px; font-size: 24px; padding: 0 10px; }
-
-.contador {
-    margin: 10px 20px;
-    font-size: 14px;
-    background: rgba(255,255,255,0.6);
-    padding: 10px;
-    border-radius: 12px;
-    backdrop-filter: blur(5px);
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.container { padding: 15px; max-width: 500px; margin: auto; transition: opacity 0.6s ease; }
-.escondido { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
-
-.tema {
-    background: #ffffff;
-    margin: 15px 0;
-    border-radius: 18px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-    overflow: hidden;
+/* ================= TOPO ================= */
+header {
+  text-align: center;
+  padding: 40px 20px;
 }
 
-.tema button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    background: linear-gradient(45deg,#9EDFD3,#A7C7FF);
-    color: #1e3d3d;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+header h1 {
+  font-size: 2.6em;
+  margin-bottom: 10px;
 }
 
-.conteudo {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.6s ease, opacity 0.5s ease;
+header p {
+  font-size: 1.2em;
+}
+
+/* ================= BOTÕES ================= */
+.controls {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+button {
+  background: linear-gradient(135deg, #7dd3fc, #86efac);
+  border: none;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ================= CONTADOR ================= */
+.counter {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+/* ================= TIMELINE ================= */
+.timeline {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.day {
+  background: rgba(255,255,255,0.75);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.day h2 {
+  margin-bottom: 15px;
+  color: #0369a1;
+}
+
+.day p {
+  margin-bottom: 20px;
+  font-size: 1.05em;
+}
+
+/* ================= FOTOS ================= */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 18px;
+}
+
+.photos img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.photos img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* ================= MAIS FOTOS ================= */
+.more-photos {
+  display: none;
+  margin-top: 20px;
+}
+
+.more-btn {
+  margin-top: 25px;
+  width: 100%;
+  background: linear-gradient(135deg, #a7f3d0, #93c5fd);
+  font-size: 1.1em;
+}
+
+/* ================= MODO NOTURNO ================= */
+body.night {
+  background: radial-gradient(circle at top, #020617, #000);
+  color: #e5e7eb;
+}
+
+body.night .day {
+  background: rgba(15,23,42,0.85);
+}
+
+body.night button {
+  background: linear-gradient(135deg, #312e81, #020617);
+  color: #fff;
+}
+
+/* ================= ESTRELAS ================= */
+.star {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 12px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
     opacity: 0;
-    padding: 0 15px;
+  }
 }
 
-.conteudo.ativo {
-    max-height: 800px;
-    opacity: 1;
-    padding: 15px;
+#futureDay {
+  animation: pulse 2.5s infinite;
 }
 
-.conteudo img {
-    width: 100%;
-    border-radius: 14px;
-    margin-bottom: 10px;
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { transform: scale(1.015); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
 }
 
-.texto {
-    background: #EAFBF3;
-    padding: 14px;
-    border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    font-size: 14px;
-}
 
-.botao-surpresa {
-    margin: 25px;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(45deg,#9EDFD3,#7FB3FF);
-    color: #1e3d3d;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.surpresa {
-    display: none;
-    margin: 15px;
-    padding: 15px;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.mensagens-noite {
-    display: none;
-    max-width: 500px;
-    margin: 20px auto;
-}
-
-.mensagem-noite {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 15px;
-    margin: 15px;
-    border-radius: 15px;
-    backdrop-filter: blur(6px);
-}
-
-.modo-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: #ffffffaa;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-@keyframes flutuar {
-    from { transform: translateY(0) scale(0.8); opacity: 0; }
-    20% { opacity: 0.8; }
-    to { transform: translateY(-110vh) scale(1.2); opacity: 0; }
-}
-
-@keyframes cairEstrela {
-    from { transform: translateY(-10vh) scale(0.6); opacity: 0; }
-    20% { opacity: 1; }
-    to { transform: translateY(110vh) scale(1); opacity: 0; }
-}
-
-.coracao, .estrela {
-    position: fixed;
-    font-size: 18px;
-    pointer-events: none;
-}
-
-.coracao { bottom: -20px; animation: flutuar linear forwards; }
-.estrela { top: -20px; animation: cairEstrela linear forwards; color: #fffacd; }
 </style>
+
+
+
 </head>
 
 <body>
 
-<button class="modo-btn" onclick="modoNoite()">🌙</button>
+<div class="wave"></div>
 
-<h1>💖 De Daniel Para meu amor, Williane 💖</h1>
-<div class="contador" id="contador"></div>
+<header>
+  <h1>Nossa Linha do Tempo 💙</h1>
+  <p>Cada momento com você virou eternidade</p>
+</header>
 
-<div class="container" id="conteudoNormal">
-
-    <div class="tema">
-        <button onclick="toggleTema(0)">💘 Porque meu coração escolheu você</button>
-        <div class="conteudo">
-            <img src="foto1.jpg" alt="Nós dois">
-            <div class="texto">
-                Desde o primeiro momento, algo em você me fez sentir em casa.  
-                Seu jeito, seu sorriso, sua energia… tudo em você conversa com o meu coração.  
-                Não foi escolha da minha mente — foi destino do meu coração escolher você. 💖
-            </div>
-        </div>
-    </div>
-
-    <div class="tema">
-        <button onclick="toggleTema(1)">😊 Porque você me faz feliz</button>
-        <div class="conteudo">
-            <img src="foto2.jpg" alt="Momentos felizes">
-            <div class="texto">
-                Você transforma dias comuns em momentos especiais.  
-                Sua risada é meu som favorito, seu abraço é meu lugar de paz.  
-                Com você, a vida fica mais leve, mais colorida e muito mais feliz. ✨
-            </div>
-        </div>
-    </div>
-
-    <div class="tema">
-        <button onclick="toggleTema(2)">👑 Porque você é a mulher da minha vida</button>
-        <div class="conteudo">
-            <img src="foto3.jpg" alt="Amor verdadeiro">
-            <div class="texto">
-                Eu não quero só viver momentos com você…  
-                Eu quero construir sonhos, planos e um futuro ao seu lado.  
-                Você é meu presente mais lindo e o futuro que eu sempre pedi a Deus. 💍💞
-            </div>
-        </div>
-    </div>
-
-    <button class="botao-surpresa" onclick="mostrarSurpresa()">Clique aqui se você me ama 💘</button>
-    <div class="surpresa" id="surpresa">
-        💌 Williane, eu sou muito grato por ter você na minha vida.  
-        Obrigado por cada carinho, cada conversa, cada momento.  
-        Eu te amo mais do que palavras conseguem explicar. 💖
-    </div>
+<div class="controls">
+  <button onclick="toggleNight()">🌙 Modo Noturno</button>
 </div>
 
-<div class="mensagens-noite" id="mensagensNoite">
-    <div class="mensagem-noite">🌙 Você é meu último pensamento antes de dormir</div>
-    <div class="mensagem-noite">✨ Seu amor ilumina até meus dias mais escuros</div>
-    <div class="mensagem-noite">💫 Quero acordar todos os dias da minha vida ao seu lado</div>
+<div class="counter" id="counter"></div>
+
+<section class="timeline">
+
+  <div class="day">
+    <h2>📅 05/12/2025</h2>
+    <p>
+      O dia que mudou tudo. Cada sorriso, cada foto, cada detalhe…
+      Foi aqui que nossa história começou de verdade 💕
+    </p>
+
+    <div class="photos">
+      <!-- Primeiras 8 fotos -->
+      <img src="timeline1.jpg">
+      <img src="timeline2.jpg">
+      <img src="timeline3.jpg">
+      <img src="timeline4.jpg">
+      <img src="timeline5.jpg">
+      <img src="timeline6.jpg">
+      <img src="timeline7.jpg">
+      <img src="timeline8.jpg">
+    </div>
+
+    <div class="more-photos" id="morePhotos">
+      <div class="photos">
+        <img src="timeline9.jpg">
+        <img src="timeline10.jpg">
+        <img src="timeline11.jpg">
+        <img src="timeline12.jpg">
+        <img src="timeline13.jpg">
+        <img src="timeline14.jpg">
+        <img src="timeline15.jpg">
+        <img src="timeline16.jpg">
+        <img src="timeline17.jpg">
+        <img src="timeline18.jpg">
+        <img src="timeline19.jpg">
+        <img src="timeline20.jpg">
+      </div>
+    </div>
+
+    <button class="more-btn" onclick="togglePhotos()">💖 Ver mais fotos</button>
+  </div>
+
+<div class="day">
+  <h2>💍 11/01/2026 — O começo do nosso namoro</h2>
+  <p>
+    Nesse dia, sem saber, a gente começou a escrever a parte mais bonita
+    da nossa história.  
+    Dois corações cheios de amor, medo e esperança decidiram caminhar juntos.  
+    Desde então, cada dia ao seu lado é a confirmação de que eu fiz a melhor
+    escolha da minha vida: você. 💖✨  
+    Que esse seja apenas o primeiro capítulo de um amor infinito.
+  </p>
 </div>
+
+<div class="day" id="futureDay">
+  <h2>⏳ 11/02/2026 — Nosso primeiro mês</h2>
+
+  <p id="loadingText" style="font-size:1.15em; font-weight:500;">
+    💞 Carregando…
+  </p>
+
+  <p id="countdownText" style="font-size:1.2em; font-weight:600; display:none;">
+    💖 Pronto em <span id="countdown"></span>
+  </p>
+</div>
+
+
+</section>
 
 <script>
-let modoNoturnoAtivo = false;
-let intervaloAnimacao;
+function updateFutureCountdown() {
+  const target = new Date("2026-02-11T00:00:00");
+  const now = new Date();
+  const diff = target - now;
 
-function toggleTema(i){
-    document.querySelectorAll(".conteudo")[i].classList.toggle("ativo");
+  const loadingText = document.getElementById("loadingText");
+  const countdownText = document.getElementById("countdownText");
+  const countdownSpan = document.getElementById("countdown");
+
+  if (diff <= 0) {
+    loadingText.innerHTML = "💖 Pronto! Nosso primeiro mês chegou 💕";
+    countdownText.style.display = "none";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  loadingText.style.display = "none";
+  countdownText.style.display = "block";
+  countdownSpan.innerText =
+    `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-function mostrarSurpresa(){
-    document.getElementById("surpresa").style.display = "block";
+setInterval(updateFutureCountdown, 1000);
+updateFutureCountdown();
+</script>
+
+
+<script>
+/* ================= CONTADOR ================= */
+function updateCounter() {
+  const start = new Date("2026-01-11");
+  const now = new Date();
+  const diff = now - start;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("counter").innerText =
+    `Estamos escrevendo nossa história há ${days} dias 💫`;
+}
+updateCounter();
+
+/* ================= MAIS FOTOS ================= */
+function togglePhotos() {
+  const box = document.getElementById("morePhotos");
+  box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-function modoNoite(){
-    modoNoturnoAtivo = !modoNoturnoAtivo;
-    document.body.classList.toggle("noite");
-    document.getElementById("conteudoNormal").classList.toggle("escondido");
-    document.getElementById("mensagensNoite").style.display = modoNoturnoAtivo ? "block" : "none";
+/* ================= MODO NOTURNO ================= */
+let night = false;
+function toggleNight() {
+  night = !night;
+  document.body.classList.toggle("night");
 
-    clearInterval(intervaloAnimacao);
-    intervaloAnimacao = setInterval(modoNoturnoAtivo ? criarEstrela : criarCoracao, 900);
+  if (night) {
+    setInterval(createStar, 300);
+  }
 }
 
-function atualizarContador(){
-    const inicio = new Date("2026-01-10T00:00:00");
-    const agora = new Date();
-    const diff = agora - inicio;
-    const dias = Math.floor(diff / (1000*60*60*24));
-    const horas = Math.floor((diff / (1000*60*60)) % 24);
-    const minutos = Math.floor((diff / (1000*60)) % 60);
-    document.getElementById("contador").innerHTML =
-        "💞 Estamos juntos há <b>" + dias + " dias, " + horas + " horas e " + minutos + " minutos</b>";
-}
-setInterval(atualizarContador, 1000);
-atualizarContador();
+/* ================= ESTRELAS ================= */
+function createStar() {
+  const star = document.createElement("div");
+  star.classList.add("star");
+  star.innerText = "⭐";
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(star);
 
-function criarCoracao(){
-    const c = document.createElement("div");
-    c.className = "coracao";
-    c.innerHTML = "💖";
-    c.style.left = Math.random()*100 + "vw";
-    c.style.animationDuration = (6 + Math.random()*6) + "s";
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),12000);
+  setTimeout(() => star.remove(), 5000);
 }
-
-function criarEstrela(){
-    const e = document.createElement("div");
-    e.className = "estrela";
-    e.innerHTML = "⭐";
-    e.style.left = Math.random()*100 + "vw";
-    e.style.animationDuration = (4 + Math.random()*5) + "s";
-    document.body.appendChild(e);
-    setTimeout(()=>e.remove(),10000);
-}
-
-intervaloAnimacao = setInterval(criarCoracao, 900);
 </script>
 
 </body>
