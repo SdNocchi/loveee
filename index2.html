@@ -184,6 +184,31 @@ body.night button {
   100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
 }
 
+.fade {
+  animation: fadeIn 1.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heart {
+  display: inline-block;
+  animation: pulseHeart 1.5s infinite;
+}
+
+@keyframes pulseHeart {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
 
 </style>
 
@@ -275,34 +300,38 @@ body.night button {
 </section>
 
 <script>
-function updateFutureCountdown() {
-  const target = new Date("2026-02-11T00:00:00");
-  const now = new Date();
-  const diff = target - now;
+function atualizarContadorNovo() {
+    const alvo = new Date("2026-02-11T00:00:00");
+    const agora = new Date();
+    const diff = alvo - agora;
 
-  const loadingText = document.getElementById("loadingText");
-  const countdownText = document.getElementById("countdownText");
-  const countdownSpan = document.getElementById("countdown");
+    const status = document.getElementById("status-novo");
+    const contador = document.getElementById("contador-novo");
 
-  if (diff <= 0) {
-    loadingText.innerHTML = "💖 Pronto! Nosso primeiro mês chegou 💕";
-    countdownText.style.display = "none";
-    return;
-  }
+    if (diff <= 0) {
+        status.innerHTML = "";
+        contador.innerHTML = `
+          <span class="fade">
+            <span class="heart">💖</span><br>
+            Hoje completamos <b>1 mês</b> juntos…<br>
+            e eu escolheria você todos os dias da minha vida 💞
+          </span>
+        `;
+        return;
+    }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diff / (1000 * 60)) % 60);
+    const segundos = Math.floor((diff / 1000) % 60);
 
-  loadingText.style.display = "none";
-  countdownText.style.display = "block";
-  countdownSpan.innerText =
-    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    status.innerHTML = "⏳ carregando… pronto em";
+    contador.innerHTML =
+        `${dias}d ${horas}h ${minutos}m ${segundos}s`;
 }
 
-setInterval(updateFutureCountdown, 1000);
-updateFutureCountdown();
+setInterval(atualizarContadorNovo, 1000);
+atualizarContadorNovo();
 </script>
 
 
