@@ -6,11 +6,12 @@
 <title>De Daniel Para meu amor, Williane 💖</title>
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #D6F4FF, #CFFFE5);
-    color: #2f4f4f;
+    background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #050816 60%, #02030a 100%);
+    color: #ffffff;
     text-align: center;
     overflow-x: hidden;
     transition: background 0.8s ease, color 0.8s ease;
@@ -21,37 +22,75 @@ body.noite {
     color: #f8c8dc;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+    animation: moverEstrelas 120s linear infinite;
+    opacity: 0.4;
+    z-index: -3;
+}
+
+@keyframes moverEstrelas {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-500px, -500px); }
+}
+
 h1 { margin-top: 25px; font-size: 24px; padding: 0 10px; }
 
 .contador {
-    margin: 10px 20px;
+    position: relative;
+    margin: 20px auto;
+    width: fit-content;
+
     font-size: 14px;
-    background: rgba(255,255,255,0.6);
-    padding: 10px;
-    border-radius: 12px;
-    backdrop-filter: blur(5px);
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px rgba(127,90,240,0.6);
 }
 
 .container { padding: 15px; max-width: 500px; margin: auto; transition: opacity 0.6s ease; }
 .escondido { opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
 
 .tema {
-    background: #ffffff;
+    background: rgba(255,255,255,0.05);
     margin: 15px 0;
     border-radius: 18px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .tema button {
     width: 100%;
     padding: 15px;
     border: none;
-    background: linear-gradient(45deg,#9EDFD3,#A7C7FF);
-    color: #1e3d3d;
+    background: linear-gradient(90deg,#7f5af0,#2cb67d,#7f5af0);
+    background-size: 200%;
+    animation: brilhoBotao 6s linear infinite;
+    color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 18px;
+}
+
+@keyframes brilhoBotao {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+.tema button:hover {
+    box-shadow: 0 0 20px #7f5af0;
+    transform: scale(1.05);
 }
 
 .conteudo {
@@ -95,12 +134,37 @@ h1 { margin-top: 25px; font-size: 24px; padding: 0 10px; }
 
 .surpresa {
     display: none;
-    margin: 15px;
-    padding: 15px;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 0 20px rgba(127,90,240,0.4);
+
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.6;
+
+    animation: aparecerSuave 0.8s ease;
 }
+
+@keyframes aparecerSuave {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .mensagens-noite {
     display: none;
@@ -165,22 +229,287 @@ h1 { margin-top: 25px; font-size: 24px; padding: 0 10px; }
   transform: scale(1.05);
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
+
+.secret-btn {
+  background: linear-gradient(135deg, #f9a8d4, #c084fc);
+  border: none;
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin: 20px;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.secret-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== VÍDEO FUNDO MAR ===== */
+#oceanVideo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  display:none;
+  filter:brightness(0.6);
+}
+
+/* ===== MODO MAR ===== */
+/* ===== MODO MAR (versão especial) ===== */
+body.mar .tema {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+}
+
+body.mar .texto {
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+}
+
+body.mar .tema button {
+    background: linear-gradient(45deg, #0ea5e9, #2563eb);
+    color: white;
+}
+
+body.mar h1 {
+    color: #ffffff;
+}
+
+body.mar .contador {
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+}
+
+body.mar .botao-surpresa {
+    background: linear-gradient(45deg, #0ea5e9, #2563eb);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(14,165,233,0.6);
+}
+
+body.mar .botao-surpresa:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(37,99,235,0.9);
+}
+
+body.mar .surpresa {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ===== BOTÃO MAR ===== */
+.ocean-btn{
+  background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+  border:none;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:1em;
+  cursor:pointer;
+  margin:10px;
+  color:white;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.ocean-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    z-index: -1;
+}
+
+.frase-mar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+    z-index: 10;
+}
+
+body {
+    padding-top: 80px;
+}
+
+body.mar .contador {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+
+.constelacao {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    height: 300px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.estrela-nome {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ffffff, 0 0 20px #7f5af0;
+    animation: pulsar 2s infinite alternate;
+}
+
+@keyframes pulsar {
+    from { opacity: 0.4; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.4); }
+}
+
+.linha-constelacao {
+    position: absolute;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    transform-origin: left center;
+}
+
+.nome-constelacao {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-top: 60px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;          /* 👈 adiciona isso */
+    z-index: 10000;           /* 👈 MUITO importante */
+}
+
+.nome-constelacao::before {
+    pointer-events: none;
+}
+
+@keyframes brilhoNome {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+.nome-constelacao::before {
+    content: "WILLIANE";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #b388ff,
+        0 0 20px #7f5af0,
+        0 0 40px #7f5af0;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.nave, .estrela-voando {
+    position: fixed;
+    pointer-events: none;
+    z-index: 20000; /* 👈 maior que tudo */
+}
+
+.nave {
+    font-size: 28px;
+    animation: voarNave linear forwards;
+}
+
+.estrela-voando {
+    font-size: 18px;
+    animation: voarEstrela linear forwards;
+}
+
+@keyframes voarNave {
+    from {
+        transform: translateX(-10vw) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(110vw) translateY(-30vh);
+        opacity: 0;
+    }
+}
+
+@keyframes voarEstrela {
+    from {
+        transform: translateX(110vw) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-10vw) translateY(40vh);
+        opacity: 0;
+    }
+}
+
 </style>
 
 </head>
 
 <body>
 
+<div class="frase-mar" id="fraseMar">
+  🌊 Eu escolhi o mar porque você gosta dele...
+  <br><br>
+  Ele me faz lembrar de você.
+  O som das ondas me acalma,
+  assim como a sua respiração quando estamos dormindo juntos.
+  💙
+</div>
+
+ <video autoplay muted loop id="oceanVideo">
+  <source src="mar.mp4" type="video/mp4">
+</video>
+
 <button class="modo-btn" onclick="modoNoite()">🌙</button>
 
-<button class="next-page" onclick="window.location.href='index2.html'">
-  ➡️ Próxima página
-</button>
-
-<h1>💖 De Daniel Para meu amor, Williane 💖</h1>
 <div class="contador" id="contador"></div>
 
+<div class="nome-constelacao" onclick="ativarEspaco()">WILLIANE</div>
+
+<div style="margin: 25px 0;">
+  <button class="next-page" onclick="window.location.href='index2.html'">
+    ➡️ Próxima página
+  </button>
+
+  <button onclick="abrirSegredo()" class="secret-btn">
+    🔒 Nosso Espaço Secreto
+  </button>
+
+  <button class="ocean-btn" onclick="toggleOceanMode()">
+    🌊 Versão Especial
+  </button>
+</div>
+
 <div class="container" id="conteudoNormal">
+
 
     <div class="tema">
         <button onclick="toggleTema(0)">💘 Porque meu coração escolheu você</button>
@@ -300,6 +629,148 @@ function criarEstrela(){
 }
 
 intervaloAnimacao = setInterval(criarCoracao, 900);
+
+function abrirSegredo() {
+  const senha = prompt("🔐 Digite a senha do nosso espaço secreto:");
+
+  if (senha === "110126") {  // <<< COLOCA A SENHA QUE VOCÊ QUISER
+    window.location.href = "segredo.html";
+  } else if (senha !== null) {
+    alert("💔 Senha errada, amor... tenta de novo 💕");
+  }
+}
+
+let oceanAtivo = false;
+
+function toggleOceanMode(){
+  oceanAtivo = !oceanAtivo;
+
+  const video = document.getElementById("oceanVideo");
+  const frase = document.getElementById("fraseMar");
+
+  document.body.classList.toggle("mar");
+
+  if(oceanAtivo){
+    video.style.display = "block";
+    frase.style.opacity = "1";
+
+    setTimeout(() => {
+      frase.style.opacity = "0";
+    }, 8000);
+
+  } else {
+    video.style.display = "none";
+    frase.style.opacity = "0";
+  }
+}
+
+function estrelaCadente(){
+    const estrela = document.createElement("div");
+    estrela.innerHTML = "🌠";
+    estrela.style.position = "fixed";
+    estrela.style.top = Math.random() * 50 + "vh";
+    estrela.style.left = "-50px";
+    estrela.style.fontSize = "20px";
+    estrela.style.transition = "transform 2s linear, opacity 2s";
+    document.body.appendChild(estrela);
+
+    setTimeout(() => {
+        estrela.style.transform = "translate(120vw, 40vh)";
+        estrela.style.opacity = "0";
+    }, 50);
+
+    setTimeout(() => estrela.remove(), 2000);
+}
+
+setInterval(estrelaCadente, 8000);
+
+function criarConstelacaoWilliane() {
+    const container = document.getElementById("constelacao");
+
+    const pontos = [
+        // W
+        [5,80],[15,20],[25,80],[35,20],[45,80],
+        // I
+        [65,20],[65,80],
+        // L
+        [85,20],[85,80],[105,80],
+        // L
+        [125,20],[125,80],[145,80],
+        // I
+        [165,20],[165,80],
+        // A
+        [185,80],[200,20],[215,80],[193,55],[207,55],
+        // N
+        [235,80],[235,20],[255,80],[255,20],
+        // E
+        [275,20],[275,80],[300,20],[275,50],[295,50],[300,80]
+    ];
+
+    pontos.forEach((p, i) => {
+        const estrela = document.createElement("div");
+        estrela.className = "estrela-nome";
+        estrela.style.left = p[0] + "px";
+        estrela.style.top = p[1] + "px";
+        container.appendChild(estrela);
+
+        if (i > 0) {
+            const prev = pontos[i - 1];
+            const linha = document.createElement("div");
+            linha.className = "linha-constelacao";
+
+            const dx = p[0] - prev[0];
+            const dy = p[1] - prev[1];
+            const distancia = Math.sqrt(dx * dx + dy * dy);
+            const angulo = Math.atan2(dy, dx) * 180 / Math.PI;
+
+            linha.style.width = distancia + "px";
+            linha.style.left = prev[0] + "px";
+            linha.style.top = prev[1] + "px";
+            linha.style.transform = `rotate(${angulo}deg)`;
+
+            container.appendChild(linha);
+        }
+    });
+}
+
+criarConstelacaoWilliane();
+
+let intervaloEspaco;
+
+function ativarEspaco() {
+
+    clearInterval(intervaloEspaco);
+
+    intervaloEspaco = setInterval(() => {
+
+        // 🚀 nave
+        const nave = document.createElement("div");
+        nave.className = "nave";
+        nave.innerHTML = "🚀";
+        nave.style.left = "-50px";
+        nave.style.top = Math.random() * 70 + "vh";
+        nave.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(nave);
+
+        setTimeout(() => nave.remove(), 8000);
+
+        // ✨ estrela
+        const estrela = document.createElement("div");
+        estrela.className = "estrela-voando";
+        estrela.innerHTML = "✨";
+        estrela.style.right = "-50px";
+        estrela.style.top = Math.random() * 80 + "vh";
+        estrela.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(estrela);
+
+        setTimeout(() => estrela.remove(), 6000);
+
+    }, 400);
+
+    // Para depois de 10 segundos
+    setTimeout(() => clearInterval(intervaloEspaco), 10000);
+}
+
 </script>
 
 </body>
