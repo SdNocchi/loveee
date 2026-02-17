@@ -114,11 +114,13 @@ h1 { margin-top: 25px; font-size: 24px; padding: 0 10px; }
 }
 
 .texto {
-    background: #EAFBF3;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
     padding: 14px;
     border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     font-size: 14px;
+    color: #ffffff;
 }
 
 .botao-surpresa {
@@ -469,6 +471,379 @@ body.mar .contador {
     }
 }
 
+.family-btn {
+  background: linear-gradient(135deg, #6dd5fa, #c084fc);
+  border: none;
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin: 20px;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.family-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.family-btn {
+  background: linear-gradient(135deg, #7f5af0, #2cb67d);
+  box-shadow: 0 0 15px rgba(127,90,240,0.4);
+}
+
+.family-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255,255,255,0.5);
+}
+
+/* BOTÃO BEIJO */
+.beijo-btn{
+  margin-top:25px;
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff4d6d,#ff758f);
+  color:white;
+  transition:0.3s;
+}
+
+.beijo-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* EFEITO ZOOM */
+.zoom-efeito{
+  animation: zoomTela 0.6s ease;
+}
+
+@keyframes zoomTela{
+  0%{ transform: scale(1); }
+  50%{ transform: scale(1.05); }
+  100%{ transform: scale(1); }
+}
+
+/* BEIJO GIGANTE */
+.beijo-popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  font-size:120px;
+  z-index:9999;
+  animation: aparecerBeijo 0.6s forwards;
+}
+
+@keyframes aparecerBeijo{
+  0%{ transform:translate(-50%,-50%) scale(0); opacity:0; }
+  70%{ transform:translate(-50%,-50%) scale(1.3); opacity:1; }
+  100%{ transform:translate(-50%,-50%) scale(1); opacity:1; }
+}
+
+/* MENSAGEM */
+.beijo-mensagem{
+  position:fixed;
+  top:65%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  padding:12px 25px;
+  border-radius:30px;
+  font-weight:bold;
+  font-size:16px;
+  z-index:9999;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* AREA CENTRAL */
+.jogo-area{
+  text-align:center;
+  margin-top:40px;
+}
+
+/* BOTÃO DO JOGO */
+.jogo-btn{
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff4d6d,#ff758f);
+  color:white;
+  transition:0.3s;
+}
+
+.jogo-btn:hover{
+  transform:scale(1.05);
+}
+
+/* CORAÇÕES */
+.coracao{
+  position:fixed;
+  top:-60px;
+  font-size:48px;              /* maior ainda */
+  cursor:pointer;
+  animation: cairCoracao 7s linear forwards;
+  z-index:999999;              /* MUITO ALTO */
+  user-select:none;
+}
+
+@keyframes cairCoracao{
+  from{
+    transform: translateY(-10vh);
+  }
+  to{
+    transform: translateY(110vh);
+  }
+}
+
+.coracao:hover{
+  transform: scale(1.2);
+}
+
+/* TEXTO +1 */
+.ponto{
+  position:fixed;
+  font-weight:bold;
+  font-size:14px;
+  color:white;
+  z-index:9999;
+  animation: subir 1s ease forwards;
+}
+
+@keyframes subir{
+  from{ opacity:1; transform:translateY(0); }
+  to{ opacity:0; transform:translateY(-30px); }
+}
+
+/* FINAL */
+.mensagem-final{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  padding:20px 30px;
+  border-radius:30px;
+  font-weight:bold;
+  font-size:18px;
+  text-align:center;
+  z-index:9999;
+}
+
+/* BARRA DE PROGRESSO */
+.barra-container{
+  width:80%;
+  max-width:300px;
+  margin:15px auto 0 auto;
+}
+
+.barra{
+  width:100%;
+  height:14px;
+  background:rgba(255,255,255,0.2);
+  border-radius:20px;
+  overflow:hidden;
+  backdrop-filter:blur(5px);
+}
+
+.progresso{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff4d6d,#ff9eb5);
+  border-radius:20px;
+  transition:0.3s;
+}
+
+/* BOTÃO */
+.pedido-btn{
+  margin-top:20px;
+  padding:14px 28px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff4b2b,#ff416c);
+  color:white;
+  transition:0.3s;
+}
+
+.pedido-btn:hover{
+  transform:scale(1.08);
+}
+
+/* MODAL */
+.pedido-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  z-index:9999;
+  animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+.pedido-box{
+  background:rgba(255,255,255,0.08);
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+  color:white;
+  max-width:90%;
+}
+
+.pedido-botoes{
+  margin-top:30px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+}
+
+.pedido-botoes button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn-sim{
+  background:#ff4b2b;
+  color:white;
+}
+
+.btn-nao{
+  background:#555;
+  color:white;
+  position:relative;
+}
+
+.kuro-btn{
+  margin-top:20px;
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(45deg,#facc15,#fb923c);
+  color:#000;
+  transition:0.3s;
+}
+
+.kuro-btn:hover{
+  transform:scale(1.08);
+}
+
+.kuro-mensagem{
+  position:fixed;
+  bottom:40%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  padding:20px 30px;
+  border-radius:30px;
+  font-size:20px;
+  font-weight:bold;
+  color:white;
+  opacity:0;
+  transition:0.5s;
+  z-index:9999;
+}
+
+.kuro-mensagem.show{
+  opacity:1;
+}
+
+/* PATINHAS */
+.patinha{
+  position:fixed;
+  font-size:22px;
+  animation:andar 4s linear forwards;
+  z-index:9998;
+}
+
+@keyframes andar{
+  from{
+    left:-10%;
+    transform:rotate(0deg);
+  }
+  to{
+    left:110%;
+    transform:rotate(10deg);
+  }
+}
+
+.contador-wrapper{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:20px;
+  z-index:999;
+}
+
+.contador-topo{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  padding:12px 28px;
+  border-radius:50px;
+  font-weight:600;
+  font-size:16px;
+  color:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+  animation:pulseTopo 2s infinite;
+  white-space:nowrap;
+}
+
+.encontro{
+  animation: pulseEncontro 2s infinite;
+}
+
+@keyframes pulseEncontro{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.05); }
+  100%{ transform:scale(1); }
+}
+
+/* No celular empilha um embaixo do outro */
+@media(max-width:768px){
+  .contador-wrapper{
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+}
+
+
 </style>
 
 </head>
@@ -492,6 +867,10 @@ body.mar .contador {
 
 <div class="contador" id="contador"></div>
 
+<div class="contador encontro" id="contadorEncontro">
+  ⏳ 0 dias 💕
+</div>
+
 <div class="nome-constelacao" onclick="ativarEspaco()">WILLIANE</div>
 
 <div style="margin: 25px 0;">
@@ -506,6 +885,42 @@ body.mar .contador {
   <button class="ocean-btn" onclick="toggleOceanMode()">
     🌊 Versão Especial
   </button>
+
+  <button class="family-btn" onclick="window.location.href='familia.html'">
+  👨‍👩‍👧‍🐶 Nossa Família
+</button>
+
+<button class="beijo-btn" onclick="mandarBeijo()">
+  💋 Me dá um beijo
+</button>
+
+</div>
+
+<div class="jogo-area">
+  <button class="jogo-btn" onclick="iniciarJogo()">
+    🎮 Capture meu coração
+  </button>
+
+  <div class="barra-container">
+  <div class="barra">
+    <div class="progresso" id="progresso"></div>
+  </div>
+
+  <button class="pedido-btn" onclick="abrirPedido()">
+💍 Pergunta Muito Importante
+</button>
+
+<button class="kuro-btn" onclick="chamarKuro()">
+  🐶 Chamar Kuro
+</button>
+
+<div id="kuroMensagem" class="kuro-mensagem">
+  Kuro aprova esse casal 🐾💖
+</div>
+
+</div>
+
+
 </div>
 
 <div class="container" id="conteudoNormal">
@@ -770,6 +1185,260 @@ function ativarEspaco() {
     // Para depois de 10 segundos
     setTimeout(() => clearInterval(intervaloEspaco), 10000);
 }
+
+</script>
+
+<script>
+function mandarBeijo(){
+
+  // Vibração no celular
+  if(navigator.vibrate){
+    navigator.vibrate(200);
+  }
+
+  // Zoom na tela
+  document.body.classList.add("zoom-efeito");
+
+  setTimeout(()=>{
+    document.body.classList.remove("zoom-efeito");
+  },600);
+
+  // Criar beijo
+  const beijo = document.createElement("div");
+  beijo.classList.add("beijo-popup");
+  beijo.innerText = "💋";
+  document.body.appendChild(beijo);
+
+  // Criar mensagem
+  const mensagem = document.createElement("div");
+  mensagem.classList.add("beijo-mensagem");
+  mensagem.innerText = "Beijo enviado com sucesso 💌";
+  document.body.appendChild(mensagem);
+
+  // Remover depois
+  setTimeout(()=>{
+    beijo.remove();
+    mensagem.remove();
+  },2000);
+}
+</script>
+
+<script>
+let jogoAtivo = false;
+let pontos = 0;
+let intervalo;
+const totalParaVencer = 15;
+
+const frases = [
+  "+1 beijo 💋",
+  "+1 abraço 🤗",
+  "+1 eu te amo ❤️"
+];
+
+function iniciarJogo(){
+  if(jogoAtivo) return;
+
+  jogoAtivo = true;
+  pontos = 0;
+  atualizarBarra();
+
+  intervalo = setInterval(criarCoracao, 700);
+
+  setTimeout(encerrarJogo, 12000);
+}
+
+function criarCoracao(){
+  coracao.classList.add("coracao");
+ coracao.innerText = "💖";
+ coracao.style.left = Math.random() * 85 + "vw";
+ coracao.style.pointerEvents = "auto";
+
+  // TAMANHO MAIOR (facilita no notebook)
+  coracao.style.fontSize = "40px";
+
+  coracao.onclick = function(e){
+    e.stopPropagation();
+    pontos++;
+    atualizarBarra();
+
+    if(navigator.vibrate){
+      navigator.vibrate(40);
+    }
+
+    mostrarPonto(coracao.style.left, coracao.offsetTop);
+    coracao.remove();
+  };
+
+  document.body.appendChild(coracao);
+
+  // agora demora mais pra sumir
+  setTimeout(()=>{
+    coracao.remove();
+  },6000);
+}
+
+function mostrarPonto(x,y){
+  const ponto = document.createElement("div");
+  ponto.classList.add("ponto");
+  ponto.innerText = frases[Math.floor(Math.random()*frases.length)];
+  ponto.style.left = x;
+  ponto.style.top = y + "px";
+
+  document.body.appendChild(ponto);
+
+  setTimeout(()=>{
+    ponto.remove();
+  },1000);
+}
+
+function atualizarBarra(){
+  const progresso = document.getElementById("progresso");
+  const porcentagem = (pontos / totalParaVencer) * 100;
+  progresso.style.width = porcentagem + "%";
+}
+
+function encerrarJogo(){
+  clearInterval(intervalo);
+  jogoAtivo = false;
+
+  const final = document.createElement("div");
+  final.classList.add("mensagem-final");
+  final.innerHTML = `
+    Você capturou meu coração para sempre 💖<br><br>
+    Amor coletado: ${pontos}
+  `;
+
+  document.body.appendChild(final);
+
+  setTimeout(()=>{
+    final.remove();
+  },4000);
+}
+</script>
+
+<script>
+function abrirPedido(){
+
+  const overlay = document.createElement("div");
+  overlay.className = "pedido-overlay";
+
+  overlay.innerHTML = `
+    <div class="pedido-box">
+      <h2>Você aceita passar o resto da sua vida comigo?</h2>
+
+      <div class="pedido-botoes">
+        <button class="btn-sim" onclick="aceitou()">💖 Sim</button>
+        <button class="btn-nao" onmouseover="fugir(this)" onclick="fugir(this)">💔 Não</button>
+      </div>
+
+      <p id="mensagemFinal" style="margin-top:20px;font-size:18px;"></p>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+}
+
+function fugir(botao){
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  botao.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function aceitou(){
+
+  if(navigator.vibrate){
+    navigator.vibrate(200);
+  }
+
+  const msg = document.getElementById("mensagemFinal");
+  msg.innerHTML = "Você capturou meu coração para sempre 💖<br>Eu te amo infinitamente.";
+
+  confete();
+}
+
+function confete(){
+  for(let i=0;i<80;i++){
+    const conf = document.createElement("div");
+    conf.style.position="fixed";
+    conf.style.width="8px";
+    conf.style.height="8px";
+    conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    conf.style.top="-10px";
+    conf.style.left=Math.random()*100+"vw";
+    conf.style.zIndex="9999";
+    conf.style.borderRadius="50%";
+    conf.style.animation="cair 2s linear forwards";
+    document.body.appendChild(conf);
+
+    setTimeout(()=>conf.remove(),2000);
+  }
+}
+
+const style = document.createElement("style");
+style.innerHTML = `
+@keyframes cair{
+  to{
+    transform:translateY(100vh) rotate(720deg);
+    opacity:0;
+  }
+}
+`;
+document.head.appendChild(style);
+</script>
+
+<script>
+function chamarKuro(){
+
+  // cria patinhas andando
+  for(let i=0; i<8; i++){
+    const pata = document.createElement("div");
+    pata.innerText = "🐾";
+    pata.classList.add("patinha");
+
+    pata.style.top = (40 + Math.random()*30) + "%";
+    pata.style.animationDuration = (3 + Math.random()*2) + "s";
+
+    document.body.appendChild(pata);
+
+    setTimeout(()=>{pata.remove();},5000);
+  }
+
+  // mostra mensagem
+  const msg = document.getElementById("kuroMensagem");
+  msg.classList.add("show");
+
+  setTimeout(()=>{
+    msg.classList.remove("show");
+  },4000);
+
+  // vibração no celular
+  if(navigator.vibrate){
+    navigator.vibrate(200);
+  }
+}
+</script>
+
+<script>
+
+function atualizarEncontro(){
+  const dataEncontro = new Date("2026-08-07T00:00:00");
+  const hoje = new Date();
+
+  const diff = dataEncontro - hoje;
+  const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  const elemento = document.getElementById("contadorEncontro");
+
+  if(dias > 0){
+    elemento.innerHTML = `⏳ ${dias} dias 💕`;
+  } else {
+    elemento.innerHTML = "⏳ É HOJE ❤️";
+  }
+}
+
+atualizarEncontro();
+setInterval(atualizarEncontro, 60000);
+
 
 </script>
 

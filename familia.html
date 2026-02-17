@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa Família 💜</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background: radial-gradient(ellipse at bottom, #0b0f2a 0%, #050816 60%, #02030a 100%);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+/* Fundo estrelado */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:200%;
+    height:200%;
+    background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+    animation: moverEstrelas 120s linear infinite;
+    opacity:0.4;
+    z-index:-1;
+}
+
+@keyframes moverEstrelas{
+    from{transform:translate(0,0);}
+    to{transform:translate(-500px,-500px);}
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:40px;
+    letter-spacing:3px;
+}
+
+.card{
+    max-width:500px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 20px rgba(127,90,240,0.4);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 35px rgba(127,90,240,0.7);
+}
+
+.card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:18px;
+    margin-bottom:15px;
+    box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+
+.card h2{
+    margin:10px 0;
+}
+
+.card p{
+    font-size:15px;
+    line-height:1.6;
+}
+
+.voltar-btn{
+    margin-top:40px;
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#7dd3fc,#86efac);
+    font-size:1em;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.voltar-btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px rgba(255,255,255,0.4);
+}
+
+.future-baby{
+    max-width:500px;
+    margin:40px auto;
+    padding:30px 20px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 25px rgba(255,192,203,0.4);
+    animation: brilhoSuave 3s infinite alternate;
+}
+
+.future-baby h2{
+    margin-bottom:15px;
+}
+
+.future-baby p{
+    font-size:16px;
+    line-height:1.6;
+}
+
+.baby-icon{
+    font-size:70px;
+    margin-bottom:15px;
+    opacity:0.8;
+}
+
+@keyframes brilhoSuave{
+    from{box-shadow:0 0 15px rgba(255,192,203,0.3);}
+    to{box-shadow:0 0 35px rgba(255,192,203,0.7);}
+}
+
+.future-card{
+    max-width:500px;
+    margin:30px auto;
+    padding:30px 25px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 25px rgba(255,105,180,0.4);
+    transition:0.4s;
+    text-align:center;
+}
+
+.future-card:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 40px rgba(255,105,180,0.8);
+}
+
+.future-card h2{
+    margin-bottom:15px;
+}
+
+.baby-silhueta{
+    font-size:70px;
+    margin:10px 0;
+    opacity:0.9;
+}
+
+.heart-pulse{
+    font-size:30px;
+    animation: pulseHeart 1.2s infinite;
+}
+
+@keyframes pulseHeart{
+    0%{ transform:scale(1); }
+    50%{ transform:scale(1.3); }
+    100%{ transform:scale(1); }
+}
+
+/* Barra carregando */
+.loading-bar{
+    width:100%;
+    height:12px;
+    background:rgba(255,255,255,0.2);
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.loading-progress{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff4d6d,#ff9eb5);
+    border-radius:20px;
+    animation: carregar 6s infinite;
+}
+
+@keyframes carregar{
+    0%{ width:0%; }
+    50%{ width:70%; }
+    80%{ width:90%; }
+    100%{ width:100%; }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>👨‍👩‍👧‍🐶 Nossa Família</h1>
+
+<div class="card">
+    <img src="eu.jpg" alt="Eu">
+    <h2>💙 Eu</h2>
+    <p>O cara mais apaixonado do universo por essa família.</p>
+</div>
+
+<div class="card">
+    <img src="williane.jpg" alt="Williane">
+    <h2>💖 Williane</h2>
+    <p>A estrela mais brilhante da minha vida.</p>
+</div>
+
+<div class="card">
+    <img src="kuro.jpg" alt="Kuro">
+    <h2>🐶 Kuro</h2>
+    <p>A guardiã oficial do nosso amor e da nossa casa.</p>
+</div>
+
+<div class="future-card">
+    <h2>✨ Carregando nosso futuro… ✨</h2>
+
+    <div class="baby-silhueta">👶</div>
+
+    <div class="heart-pulse">💓</div>
+
+    <div class="loading-bar">
+        <div class="loading-progress"></div>
+    </div>
+
+    <p>Nosso filho(a) nos espera…<br><strong>Yara / Noah 💜</strong></p>
+</div>
+
+<button class="voltar-btn" onclick="window.location.href='index.html'">
+⬅ Voltar
+</button>
+
+</body>
+</html>

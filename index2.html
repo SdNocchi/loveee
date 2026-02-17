@@ -312,19 +312,27 @@ header h1{
 
 @media (max-width: 480px) {
 
-    .contador {
-        top: 70px; /* 👈 desce ele no celular */
-        font-size: 12px;
-        padding: 8px 16px;
-    }
-
     .back-btn {
-        top: 15px;
-        left: 10px;
+        position: absolute;
+        display: block;
+        margin: 15px auto 10px auto;
+        top: auto;
+        left: auto;
     }
 
-    body {
-        padding-top: 130px; /* 👈 cria espaço real no topo */
+    .contador-topo {
+        position: relative;
+        display: block;
+        margin: 10px auto 20px auto;
+        top: auto;
+        left: auto;
+        transform: none;
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+
+    header {
+        padding-top: 10px;
     }
 
 }
