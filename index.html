@@ -843,6 +843,42 @@ body.mar .contador {
   }
 }
 
+.se-um-dia-btn{
+    display:block;
+    margin:30px auto 0 auto;
+    padding:12px 28px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.05);
+    color:white;
+    backdrop-filter:blur(10px);
+    font-size:0.9em;
+    letter-spacing:1px;
+    transition:0.4s;
+}
+
+.se-um-dia-btn:hover{
+    background:rgba(255,255,255,0.15);
+    transform:scale(1.05);
+}
+
+.btn-trailer{
+    padding:14px 35px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(45deg,#6a11cb,#ff416c);
+    color:white;
+    font-size:18px;
+    letter-spacing:1px;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(255,65,108,0.6);
+    transition:0.4s;
+}
+
+.btn-trailer:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px rgba(255,65,108,1);
+}
 
 </style>
 
@@ -910,9 +946,23 @@ body.mar .contador {
 💍 Pergunta Muito Importante
 </button>
 
+<div>
+<button class="se-um-dia-btn" onclick="window.location.href='seumdia.html'">
+🌙 Se um dia...
+</button>
+
+<button class="secret-btn" onclick="window.location.href='promessas.html'">
+💍 Promessas
+</button>
+
+<button onclick="window.location.href='trailer.html'" class="btn-trailer">
+✨ Ver Nosso Filme ✨
+</button>
+
 <button class="kuro-btn" onclick="chamarKuro()">
   🐶 Chamar Kuro
 </button>
+</div>
 
 <div id="kuroMensagem" class="kuro-mensagem">
   Kuro aprova esse casal 🐾💖

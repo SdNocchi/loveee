@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trailer do Nosso Amor 🎬</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+
+/* ===== FUNDO ESTRELADO ===== */
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+.stars span{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink{
+    from{opacity:0.3;}
+    to{opacity:1;}
+}
+
+/* ===== TEXTO CINEMATOGRÁFICO ===== */
+.text{
+    max-width:90%;
+    font-size:22px;
+    opacity:0;
+    transform:scale(0.9);
+    transition:opacity 2s ease, transform 2s ease;
+}
+
+.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* ===== NOME COM BRILHO ===== */
+.title{
+    font-size:32px;
+    letter-spacing:4px;
+    position:relative;
+    display:inline-block;
+}
+
+.title::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: brilho 3s infinite;
+}
+
+@keyframes brilho{
+    0%{left:-100%;}
+    100%{left:100%;}
+}
+
+/* ===== CORAÇÃO FINAL ===== */
+.heart{
+    font-size:50px;
+    margin-top:20px;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.3);}
+    100%{transform:scale(1);}
+}
+
+.btn-voltar-trailer{
+    display:block;
+    margin:50px auto 30px auto;
+    padding:14px 35px;
+    border:none;
+    border-radius:40px;
+    font-size:18px;
+    cursor:pointer;
+    background:linear-gradient(45deg,#ff416c,#ff4b2b);
+    color:white;
+    letter-spacing:1px;
+    box-shadow:0 0 20px rgba(255,65,108,0.6);
+    transition:0.4s;
+}
+
+.btn-voltar-trailer:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 35px rgba(255,65,108,1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="text" id="text"></div>
+
+<audio autoplay>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* ===== FRASES DO TRAILER ===== */
+const frases = [
+"Em um mundo onde tudo parecia comum...",
+"Entre bilhões de pessoas...",
+"Duas almas se encontraram.",
+"E naquele instante...",
+"O universo decidiu escrever uma história diferente.",
+"Não é sobre sorte.",
+"É sobre destino.",
+"É sobre escolha.",
+"É sobre amar todos os dias.",
+"",
+"Williane & Daniel",
+"",
+"Uma história que não tem fim.",
+"Porque esse filme...",
+"É eterno."
+];
+
+let index = 0;
+const textElement = document.getElementById("text");
+
+function nextText(){
+    if(index < frases.length){
+
+        textElement.classList.remove("show");
+
+        setTimeout(()=>{
+            textElement.innerHTML = frases[index];
+
+            if(frases[index].includes("&")){
+                textElement.classList.add("title");
+            }else{
+                textElement.classList.remove("title");
+            }
+
+            textElement.classList.add("show");
+
+            index++;
+
+            setTimeout(nextText, 3500);
+
+        },1000);
+
+    }else{
+        finalizar();
+    }
+}
+
+function finalizar(){
+    textElement.innerHTML = `
+        <div>Em cartaz para sempre.</div>
+        <div class="heart">❤️</div>
+    `;
+    textElement.classList.add("show");
+
+    // Vibração forte no celular
+    if(navigator.vibrate){
+        navigator.vibrate([300,100,300,100,500]);
+    }
+
+    // Mostrar botão depois de 3 segundos
+    setTimeout(()=>{
+        const botao = document.getElementById("btnFinal");
+        botao.style.display = "block";
+        botao.style.opacity = "0";
+        botao.style.transition = "opacity 2s ease";
+        
+        setTimeout(()=>{
+            botao.style.opacity = "1";
+        },100);
+        
+    },3000);
+}
+
+nextText();
+
+/* ===== GERAR ESTRELAS ===== */
+const starsContainer = document.getElementById("stars");
+
+for(let i=0; i<120; i++){
+  const star = document.createElement("span");
+  star.style.top = Math.random()*100 + "vh";
+  star.style.left = Math.random()*100 + "vw";
+  star.style.animationDuration = (1 + Math.random()*3) + "s";
+  starsContainer.appendChild(star);
+}
+
+</script>
+
+<button onclick="window.location.href='index.html'" 
+class="btn-voltar-trailer" 
+id="btnFinal" 
+style="display:none;">
+🏠 Voltar para Nossa História
+</button>
+
+</body>
+</html>

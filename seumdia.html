@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Se um dia... 🌙</title>
+
+<style>
+body{
+    margin:0;
+    background:#050816;
+    color:white;
+    font-family:'Segoe UI', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* estrelas */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(0px);}
+    to{transform:translateY(-1000px);}
+}
+
+.container{
+    max-width:600px;
+    padding:30px;
+    z-index:2;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:rgba(255,255,255,0.2);
+}
+
+.carta{
+    margin-top:30px;
+    font-size:1.1em;
+    line-height:1.8;
+    min-height:200px;
+}
+
+/* Eu te amo final */
+.final{
+    margin-top:40px;
+    font-size:2em;
+    opacity:0;
+    transition:1.5s;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+.voltar-inicio{
+    margin-top:50px;
+    padding:14px 30px;
+    border:none;
+    border-radius:40px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+    
+}
+
+.voltar-inicio:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Se um dia você duvidar do meu amor...</h2>
+
+<button onclick="iniciar()">Clique aqui</button>
+
+<div class="carta" id="carta"></div>
+<div class="final" id="final">Eu te amo minha gatinha linda💖</div>
+
+</div>
+
+<!-- Música -->
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* ===== Estrelas ===== */
+for(let i=0; i<80; i++){
+    let star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.animationDuration = (5 + Math.random()*10) + "s";
+    document.body.appendChild(star);
+}
+
+/* ===== Texto Digitando ===== */
+
+const texto = `
+Se um dia você estiver insegura...
+
+Lembra que foi você que meu coração escolheu.
+
+Se o mundo ficar pesado,
+eu quero ser o seu descanso.
+
+Se você chorar,
+eu vou estar ali.
+
+E se você sorrir,
+eu quero ser o motivo.
+
+Eu não escolhi você por um momento.
+Eu escolhi você para todos os momentos.
+`;
+
+let i = 0;
+let velocidade = 35;
+
+function iniciar(){
+    document.querySelector("button").style.display="none";
+
+    // toca música (funciona porque foi acionado por clique)
+    let audio = document.getElementById("musica");
+    audio.volume = 0.3;
+    audio.play();
+
+    digitar();
+}
+
+function digitar(){
+    if(i < texto.length){
+        document.getElementById("carta").innerHTML += 
+        texto.charAt(i) === "\n" ? "<br>" : texto.charAt(i);
+        i++;
+        setTimeout(digitar, velocidade);
+    } else {
+        mostrarFinal();
+    }
+}
+
+function mostrarFinal(){
+    const final = document.getElementById("final");
+    final.style.opacity = 1;
+
+    // Vibração intensa
+    if (navigator.vibrate) {
+        navigator.vibrate([
+            300, 100, 300, 100, 500, 200,
+            800, 150, 800, 200, 1000
+        ]);
+    }
+}
+
+</script>
+
+</body>
+</html>

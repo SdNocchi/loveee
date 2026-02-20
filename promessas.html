@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minhas Promessas 💍</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #111827, #0b0f2a 60%, #050816);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+    padding:40px 20px;
+}
+
+/* Fundo estrelado suave */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:200%;
+    height:200%;
+    background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+    animation: moverEstrelas 120s linear infinite;
+    opacity:0.3;
+    z-index:-1;
+}
+
+@keyframes moverEstrelas{
+    from{transform:translate(0,0);}
+    to{transform:translate(-400px,-400px);}
+}
+
+h1{
+    margin-bottom:50px;
+    font-size:30px;
+    letter-spacing:2px;
+}
+
+.promessa{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 1s ease;
+    margin:25px 0;
+    font-size:18px;
+}
+
+.promessa.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Final */
+.final{
+    margin-top:60px;
+    font-size:22px;
+    font-weight:bold;
+    opacity:0;
+    transition:1.5s;
+}
+
+.final.show{
+    opacity:1;
+}
+
+.coracao{
+    font-size:50px;
+    margin-top:20px;
+    animation:pulsar 1.2s infinite;
+    display:none;
+}
+
+@keyframes pulsar{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+/* Botão voltar */
+.voltar{
+    margin-top:60px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#7dd3fc,#86efac);
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.voltar:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🤍 Minhas Promessas Para Você 🤍</h1>
+
+<div class="promessa">Prometo cuidar do seu coração como se fosse o meu.</div>
+<div class="promessa">Prometo respeitar seus medos e suas inseguranças.</div>
+<div class="promessa">Prometo ficar quando for difícil.</div>
+<div class="promessa">Prometo rir com você nos dias leves.</div>
+<div class="promessa">Prometo segurar sua mão nos dias pesados.</div>
+<div class="promessa">Prometo crescer ao seu lado, nunca contra você.</div>
+
+<div class="final">
+E prometo nunca parar de escolher você.
+</div>
+
+<div class="coracao">❤️</div>
+
+<button class="voltar" onclick="window.location.href='index.html'">
+⬅ Voltar
+</button>
+
+<script>
+
+const promessas = document.querySelectorAll(".promessa");
+const final = document.querySelector(".final");
+const coracao = document.querySelector(".coracao");
+
+let delay = 0;
+
+promessas.forEach((p, index)=>{
+    setTimeout(()=>{
+        p.classList.add("show");
+    }, delay += 1500);
+});
+
+setTimeout(()=>{
+    final.classList.add("show");
+    coracao.style.display = "block";
+
+    // vibração no celular
+    if(navigator.vibrate){
+        navigator.vibrate([200,100,200,100,300]);
+    }
+
+}, delay + 1500);
+
+</script>
+
+</body>
+</html>
